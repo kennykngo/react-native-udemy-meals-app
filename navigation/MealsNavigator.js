@@ -13,7 +13,7 @@ const MealsNavigator = createStackNavigator({
   // identifier
   // value is a pointer towards the React Native component
   Categories: CategoriesScreen,
-  CategoryMeals: CategoryMealsScreen,
+  CategoryMeals: { screen: CategoryMealsScreen },
   MealDetail: MealDetailScreen,
 });
 
