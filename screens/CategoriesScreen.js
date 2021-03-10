@@ -2,14 +2,15 @@ import React from 'react';
 import {
   Button,
   FlatList,
+  Platform,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-  Platform,
 } from 'react-native';
-import Colors from '../constants/Color';
 
+import CategoryGridTile from '../components/CategoryGridTile';
+import Colors from '../constants/Color';
 import { CATEGORIES } from '../data/dummy-data';
 
 const CategoriesScreen = ({ navigation }) => {
@@ -18,18 +19,15 @@ const CategoriesScreen = ({ navigation }) => {
     // .item (one of the few properties of itemData object)
     // .title (shape of object created from category.js)
     return (
-      <TouchableOpacity
-        style={styles.gridItem}
-        onPress={() => {
+      <CategoryGridTile
+        title={itemData.item.title}
+        color={itemData.item.color}
+        onSelect={() => {
           navigation.navigate('CategoryMeals', {
             categoryId: itemData.item.id,
           });
         }}
-      >
-        <View>
-          <Text> {itemData.item.title} </Text>
-        </View>
-      </TouchableOpacity>
+      />
     );
   };
 
@@ -45,10 +43,6 @@ const CategoriesScreen = ({ navigation }) => {
 
 CategoriesScreen.navigationOptions = {
   headerTitle: 'Meal Categories',
-  headerStyle: {
-    backgroundColor: Platform.OS === 'android' ? Colors.primaryColor : '',
-  },
-  headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primaryColor,
 };
 
 const styles = StyleSheet.create({

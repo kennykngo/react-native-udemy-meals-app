@@ -5,7 +5,6 @@ import { CATEGORIES } from '../data/dummy-data';
 
 const CategoryMealsScreen = (props) => {
   const categoryId = props.navigation.getParam('categoryId');
-
   const selectedCategory = CATEGORIES.find((cat) => cat.id === categoryId);
 
   return (
@@ -27,6 +26,15 @@ const CategoryMealsScreen = (props) => {
       />
     </View>
   );
+};
+
+CategoryMealsScreen.navigationOptions = (navigationData) => {
+  const categoryId = navigationData.navigation.getParam('categoryId');
+  const selectedCategory = CATEGORIES.find((cat) => cat.id === categoryId);
+
+  return {
+    headerTitle: selectedCategory.title,
+  };
 };
 
 const styles = StyleSheet.create({
