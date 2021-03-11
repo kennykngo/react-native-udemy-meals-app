@@ -11,7 +11,7 @@ import {
 
 import CategoryGridTile from '../components/CategoryGridTile';
 import Colors from '../constants/Color';
-import { CATEGORIES } from '../data/dummy-data';
+import { CATEGORIES, MEALS } from '../data/dummy-data';
 
 const CategoriesScreen = ({ navigation }) => {
   const renderGridItem = (itemData) => {
