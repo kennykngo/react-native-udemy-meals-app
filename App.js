@@ -8,8 +8,8 @@ import MealsNavigator from './navigation/MealsNavigator';
 
 enableScreens();
 
-const fetchFonts = async () => {
-  return await Font.loadAsync({
+const fetchFonts = () => {
+  return Font.loadAsync({
     'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
     'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
   });
