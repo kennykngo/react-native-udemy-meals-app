@@ -1,5 +1,5 @@
-import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
+import React from 'react';
 // import { Platform } from 'react-navigation-drawer';
 // import { createBottomTabNavigator } from 'react-navigation-tabs';
 // import { createStackNavigator } from 'react-navigation-stack';
@@ -23,6 +23,12 @@ const defaultStackNavOptions = {
   },
   headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primaryColor,
   headerTitle: 'A Screen',
+  headerTitleStyle: {
+    fontFamily: 'open-sans-bold',
+  },
+  headerBackTitleStyle: {
+    fontFamily: 'open-sans',
+  },
 };
 
 const MealsNavigator = createStackNavigator(
@@ -96,7 +102,7 @@ const FiltersNavigator = createStackNavigator(
   },
   {
     // navigationOptions: {
-    //   drawerLabel: 'Filters!!!!'
+    //   drawerLabel: 'filters!!!',
     // },
     defaultNavigationOptions: defaultStackNavOptions,
   }

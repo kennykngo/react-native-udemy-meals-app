@@ -1,6 +1,6 @@
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { enableScreens } from 'react-native-screens';
 
@@ -17,6 +17,28 @@ const fetchFonts = () => {
 
 export default function App() {
   const [fontLoaded, setFontLoaded] = useState(false);
+
+  // const loadFonts = async () => {
+  //   await Font.loadAsync({
+  //     'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
+  //     'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
+  //   });
+  //   setFontLoaded(true);
+  // };
+
+  // useEffect(() => {
+  //   loadFonts();
+  // }, []);
+
+  // const fetchFonts = useEffect(() => {
+  //   async () =>
+  //     await Promise.all([
+  //       Font.loadAsync({
+  //         'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
+  //         'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
+  //       }),
+  //     ]);
+  // }, []);
 
   if (!fontLoaded) {
     return (
