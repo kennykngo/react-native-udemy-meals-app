@@ -1,9 +1,9 @@
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
-// import { Platform } from 'react-navigation-drawer';
+// import { Platform, Text } from 'react-navigation-drawer';
 // import { createBottomTabNavigator } from 'react-navigation-tabs';
 // import { createStackNavigator } from 'react-navigation-stack';
-import { Platform } from 'react-native';
+import { Platform, Text } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
@@ -23,9 +23,11 @@ const defaultStackNavOptions = {
   },
   headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primaryColor,
   headerTitle: 'A Screen',
+  // style for the default header set
   headerTitleStyle: {
     fontFamily: 'open-sans-bold',
   },
+  // style for back title (Mainly used for IOS since android is just a button)
   headerBackTitleStyle: {
     fontFamily: 'open-sans',
   },
@@ -68,6 +70,13 @@ const tabScreenConfig = {
         );
       },
       tabBarColor: Colors.primaryColor,
+      tabBarColor: Colors.accentColor,
+      tabBarLabel:
+        Platform.OS === 'android' ? (
+          <Text style={{ fontFamily: 'open-sans-bold' }}>Meals</Text>
+        ) : (
+          'Meals'
+        ),
     },
   },
   Favorites: {
@@ -77,6 +86,12 @@ const tabScreenConfig = {
         return <Ionicons name='ios-star' size={25} color={tabInfo.tintColor} />;
       },
       tabBarColor: Colors.accentColor,
+      tabBarLabel:
+        Platform.OS === 'android' ? (
+          <Text style={{ fontFamily: 'open-sans-bold' }}>Favorites</Text>
+        ) : (
+          'Favorites'
+        ),
     },
   },
 };
@@ -92,6 +107,9 @@ const MealsFavTabNavigator =
       })
     : createBottomTabNavigator(tabScreenConfig, {
         tabBarOptions: {
+          labelStyle: {
+            fontFamily: 'open-sans-bold',
+          },
           activeTintColor: Colors.accentColor,
         },
       });
