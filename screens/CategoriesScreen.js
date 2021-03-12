@@ -1,5 +1,13 @@
 import React from 'react';
-import { Button, FlatList, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {
+  Button,
+  FlatList,
+  Platform,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 
 import CategoryGridTile from '../components/CategoryGridTile';
@@ -46,7 +54,6 @@ CategoriesScreen.navigationOptions = (navData) => {
           title='Menu'
           iconName='ios-menu'
           onPress={() => {
-            // console.log(navData);
             navData.navigation.toggleDrawer();
           }}
         />
