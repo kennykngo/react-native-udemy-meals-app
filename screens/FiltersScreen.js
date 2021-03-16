@@ -2,9 +2,11 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { Switch } from 'react-native-gesture-handler';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import { useDispatch } from 'react-redux';
 
 import HeaderButton from '../components/HeaderButton';
 import Colors from '../constants/Color';
+import { setFilters } from '../store/actions/meals';
 
 const FilterSwich = (props) => {
   return (
@@ -29,19 +31,21 @@ const FiltersScreen = (props) => {
   const [isVegan, setIsVegan] = useState(false);
   const [isVegetarian, setIsVegetarian] = useState(false);
 
+  const dispatch = useDispatch();
+
   // Way to pass down data onto the 'navigation' object
   // useCallback saves and caches the selected function and changes depending on the dependency array
   // SO if any of the 4 states DON'T change, then the saveFilters isn't recreated AND wouldn't trigger rerendering on the useEffect
   const saveFilters = useCallback(() => {
     // appliedFilters object is constantly recreating
     const appliedFilters = {
-      isGlutenFree,
-      isLactoseFree,
-      isVegan,
-      isVegetarian,
+      glutenFree: isGlutenFree,
+      lactoseFree: isLactoseFree,
+      vegan: isVegan,
+      vegetarian: isVegetarian,
     };
 
-    console.log(appliedFilters);
+    dispatch(setFilters(appliedFilters));
   }, [isGlutenFree, isLactoseFree, isVegetarian, isVegan]);
 
   // setting the function whenever state changes
@@ -70,7 +74,7 @@ const FiltersScreen = (props) => {
         onChange={(newValue) => setIsVegan(newValue)}
       />
       <FilterSwich
-        label='Vegan'
+        label='Vegetarian'
         state={isVegetarian}
         onChange={(newValue) => setIsVegetarian(newValue)}
       />
